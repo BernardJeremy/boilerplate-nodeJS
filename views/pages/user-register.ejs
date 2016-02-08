@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+  <form id="registerForm" method="post" action="/user/register">
+    <div>
+      <h2>User Register</h2>
+      <p>Please Register or <a href="/">Log-in</a></p>
+    </div>
+    <label class="description" for="element_1">Login </label>
+    <div>
+      <input id="login" name="user[username]" class="element text medium" type="text" maxlength="255" value="">
+    </div>
+    <label class="description" for="element_2">Password </label>
+    <div>
+      <input id="password" name="user[password]" class="element text medium" type="password" maxlength="255" value="">
+    </div>
+    <label class="description" for="element_3">Reapeat password</label>
+    <div>
+      <input id="password_reapeat" name="user[password2]" class="element text medium" type="password" maxlength="255" value="">
+    </div>
+    <input id="submitForm" class="button_text" type="submit" name="submit" value="Submit">
+  </form>
+	<% include ../partials/flash %>
+</body>
+<% include ../partials/footer %>
+</html>
