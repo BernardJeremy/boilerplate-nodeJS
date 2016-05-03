@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-</head>
-<body>
-  <form id="loginForm" method="post" action="/login/">
-    <div>
-      <h2>User Login</h2>
-      <p>Please login or <a href="/user/new">Register</a></p>
-    </div>
-    <label class="description" for="element_1">Login </label>
-    <div>
-      <input id="login" name="username" class="element text medium" type="text" maxlength="255" value="">
-      <span></span>
-    </div>
-    <label class="description" for="element_2">Password </label>
-    <div>
-      <input id="password" name="password" class="element text medium" type="password" maxlength="255" value="">
-    </div>
-    <input id="submitForm" class="button_text" type="submit" name="submit" value="Submit">
-  </form>
-	<% include ../partials/flash %>
-</body>
-<% include ../partials/footer %>
+<html lang="fr">
+	<head>
+
+		<% include ../partials/min-head %>
+		<link media="all" type="text/css" rel="stylesheet" href="/css/login.css">
+
+	</head>
+	<body class="container-fluid">
+		<div class="row">
+			<section id="page-login" class="col-sm-3 not-float">
+				<form method="POST" action="/login" accept-charset="UTF-8">
+					<ul>
+						<li>
+							<label for="login">Login :</label>
+							<input name="username" type="text" value="" id="username" placeholder="Login">
+						</li>
+						<li>
+							<label for="password">Password:</label>
+							<input name="password" type="password" value="" id="password" placeholder="Mot de passe">
+						</li>
+						<input class="btn btn-validate" type="submit" value="Connexion">
+					</ul>
+				</form>
+				<% include ../partials/flash %>
+			</section>
+		</div>
+		<% include ../partials/footer %>
+	</body>
 </html>

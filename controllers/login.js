@@ -1,19 +1,23 @@
 exports.loginOk = function (req, res) {
-  req.flash('flash', 'Vous êtes connecté.');
-  var redirectTo = req.session.returnTo ? req.session.returnTo : '/home';
+  req.flash('flash', 'Connected.');
+  var redirectTo = req.session.returnTo ? req.session.returnTo : '/';
   delete req.session.returnTo;
   res.redirect(redirectTo);
 
 };
 
 exports.loginFail = function (req, res) {
-  req.flash('flash', 'Nom d\'utilisateur ou mot de passe incorrecte !');
-  res.redirect('/');
+  req.flash('flash', 'Login or password denied!');
+  req.session.save(function () {
+    res.redirect('/');
+  });
 };
 
 exports.loginNeeded = function (req, res) {
-  req.flash('flash', 'Vous devez être connecté !');
-  res.redirect('/');
+  req.flash('flash', 'You have to be connected!');
+  req.session.save(function () {
+    res.redirect('/');
+  });
 };
 
 exports.loginView = function (req, res) {
@@ -22,6 +26,8 @@ exports.loginView = function (req, res) {
 
 exports.logout = function (req, res) {
   req.logout();
-  req.flash('flash', 'Vous avez été déconnecté.');
-  res.redirect('/');
+  req.flash('flash', 'You have been disconnected');
+  req.session.save(function () {
+    res.redirect('/');
+  });
 };

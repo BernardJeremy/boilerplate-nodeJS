@@ -1,7 +1,7 @@
 {
   "port": 8080,
   "dbConfig" : {
-    "database": "sam_irc",
+    "database": "slack_meeting",
     "username": "dev",
     "password": "dev1",
     "options": {
@@ -10,5 +10,7 @@
       "logging": false
     }
   },
-  "debug": false
+  "debug": false,
+  "secret": "mysupersecretkey",
+  "timezone": 120
 }
