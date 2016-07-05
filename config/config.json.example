@@ -1,7 +1,7 @@
 {
   "port": 8080,
   "dbConfig" : {
-    "database": "slack_meeting",
+    "database": "boilerplate",
     "username": "dev",
     "password": "dev1",
     "options": {

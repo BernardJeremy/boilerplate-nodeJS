@@ -1,12 +1,9 @@
-var passport = require('./libs/passport');
+let app = require('./libs/express');
+let _ = require('./libs/strftime').init(app);
 
-var app = require('./libs/express');
-var sessionStore = require('./libs/sequelizeSession')(app);
-var flash = require('./libs/flash')(app);
+let port = require('./config/config.json').port;
 
-var port = require('./config/config.json').port;
-
-require('./routes')(app, passport);
+require('./routes')(app);
 
 app.listen(port, function () {
   console.log('Listening on port ' + port);

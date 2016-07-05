@@ -1,6 +1,6 @@
-var dbConfig = require('../config/config.json').dbConfig;
+let dbConfig = require('../config/config.json').dbConfig;
 
-var Sequelize = require('sequelize');
+let Sequelize = require('sequelize');
 
 module.exports = new Sequelize(
   dbConfig.database,

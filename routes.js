@@ -1,20 +1,15 @@
-var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
-var ensureLoggedOut = require('connect-ensure-login').ensureLoggedOut;
+let loginController = require('./controllers/login');
 
-var loginController = require('./controllers/login');
+let adminMiddleware = require('./middlewares/admin');
 
-var adminMiddleware = require('./middlewares/admin');
-
-module.exports = function (app, passport) {
+module.exports = function (app) {
 
   /**
   ** LOGIN
   */
-  app.get('/', ensureLoggedOut('/list'), loginController.loginView);
+  app.get('/', loginController.loginView);
 
-  app.post('/login',
-    passport.authenticate('local', { failureRedirect: '/login/fail/' }),
-    loginController.loginOk);
+  app.post('/login', loginController.loginOk('/'));
 
   app.get('/login/fail', loginController.loginFail);
 

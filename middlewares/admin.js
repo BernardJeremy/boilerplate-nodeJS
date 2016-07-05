@@ -3,7 +3,6 @@ module.exports.ensureIsAdmin = function (redirectTo) {
     if (req.isAdmin) {
       next();
     } else {
-      req.flash('flash', 'Access denied !');
       return res.redirect(redirectTo);
     }
   };

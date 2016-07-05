@@ -1,23 +1,17 @@
-exports.loginOk = function (req, res) {
-  req.flash('flash', 'Connected.');
-  var redirectTo = req.session.returnTo ? req.session.returnTo : '/';
-  delete req.session.returnTo;
-  res.redirect(redirectTo);
+const userModel = require('../models/user');
 
-};
+exports.loginOk = function (redirectTo) {
+  return function (req, res) {
+    res.redirect(redirectTo);
+  };
+}
 
 exports.loginFail = function (req, res) {
-  req.flash('flash', 'Login or password denied!');
-  req.session.save(function () {
-    res.redirect('/');
-  });
+  res.redirect('/');
 };
 
 exports.loginNeeded = function (req, res) {
-  req.flash('flash', 'You have to be connected!');
-  req.session.save(function () {
-    res.redirect('/');
-  });
+  res.redirect('/');
 };
 
 exports.loginView = function (req, res) {
@@ -26,8 +20,5 @@ exports.loginView = function (req, res) {
 
 exports.logout = function (req, res) {
   req.logout();
-  req.flash('flash', 'You have been disconnected');
-  req.session.save(function () {
-    res.redirect('/');
-  });
+  res.redirect('/');
 };
