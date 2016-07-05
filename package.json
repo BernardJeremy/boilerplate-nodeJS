@@ -8,10 +8,14 @@
   },
   "dependencies": {
     "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
     "cookie-parser": "^1.4.1",
     "ejs": "^2.4.1",
     "express": "^4.12.4",
+    "jquery": "^3.0.0",
     "sequelize": "^3.17.3",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8",
     "strftime": "^0.9.2"
   },
   "devDependencies": {},

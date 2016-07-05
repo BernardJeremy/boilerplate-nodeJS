@@ -5,6 +5,8 @@ let port = require('./config/config.json').port;
 
 require('./routes')(app);
 
-app.listen(port, function () {
+let server = app.listen(port, function () {
   console.log('Listening on port ' + port);
 });
+
+let io = require('./libs/socket.io').init(server);
