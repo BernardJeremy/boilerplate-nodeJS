@@ -4,19 +4,14 @@ Boilerplate created to start a Node.JS project, with several modules and feature
 
 ## Modules
 - `body-parser`
-- `connect-flash`
-- `connect-ensure-login`
 - `cookie-parser`
 - `ejs`
 - `express`
-- `mysql`
-- `passport`
-- `passport-local`
 - `sequelize`
-- `sequelize-session`
-- `sha1`
 - `strftime`
 
 ## Features
-- `Login`
+- `Login` / `Basic user management`
 - `Bootstrap`
+- `JQuery`
+- `Socket.io`
