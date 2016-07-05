@@ -1,5 +1,6 @@
 let app = require('./libs/express');
 let _ = require('./libs/strftime').init(app);
+_ = require('./libs/morgan').init(app);
 
 let port = require('./config/config.json').port;
 
