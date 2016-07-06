@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
 const crypto = require('crypto');
 
-let db = require('../libs/sequelize');
-let salt = require('../config/config.json').secret;
+const hash = require('../services/hash');
+const db = require('../libs/sequelize');
+const salt = require('../config/config.json').secret;
 
 let User = db.define('user', {
   username: {
@@ -36,7 +37,7 @@ User.sync().then(function () {
     if (!user) {
       User.create({
         username: 'admin',
-        password: crypto.createHmac('sha256', salt).update('admin').digest('hex'),
+        password: hash.sha256('admin', salt),
         isAdmin: true,
       });
     }

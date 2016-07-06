@@ -1,6 +1,8 @@
-let loginController = require('./controllers/login');
+const loginController = require('./controllers/login');
 
-let adminMiddleware = require('./middlewares/admin');
+const adminMiddleware = require('./middlewares/admin');
+const authenticate = require('./middlewares/auth').authenticate;
+const ensureIsLogIn = require('./middlewares/auth').verify;
 
 module.exports = function (app) {
 
@@ -9,12 +11,17 @@ module.exports = function (app) {
   */
   app.get('/', loginController.loginView);
 
-  app.post('/login', loginController.loginOk('/'));
+  app.post('/login', authenticate('/login/fail') ,loginController.loginOk('/home'));
 
-  app.get('/login/fail', loginController.loginFail);
+  app.get('/login/fail' , loginController.loginFail);
 
   app.get('/login/needed', loginController.loginNeeded);
 
   app.get('/logout', loginController.logout);
 
+  /**
+  ** HOME
+  */
+
+  app.get('/home', ensureIsLogIn('/login/needed'), loginController.loginView);
 };

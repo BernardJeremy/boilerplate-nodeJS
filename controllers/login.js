@@ -2,16 +2,16 @@ const userModel = require('../models/user');
 
 exports.loginOk = function (redirectTo) {
   return function (req, res) {
-    res.redirect(redirectTo);
+    res.redirect(redirectTo + '?ok');
   };
 }
 
 exports.loginFail = function (req, res) {
-  res.redirect('/');
+  res.redirect('/?fail');
 };
 
 exports.loginNeeded = function (req, res) {
-  res.redirect('/');
+  res.redirect('/?needed');
 };
 
 exports.loginView = function (req, res) {
@@ -19,6 +19,5 @@ exports.loginView = function (req, res) {
 };
 
 exports.logout = function (req, res) {
-  req.logout();
-  res.redirect('/');
+  res.redirect('/?logout');
 };
