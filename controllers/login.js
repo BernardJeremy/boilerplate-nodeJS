@@ -19,5 +19,6 @@ exports.loginView = function (req, res) {
 };
 
 exports.logout = function (req, res) {
+  res.clearCookie('token');
   res.redirect('/?logout');
 };
