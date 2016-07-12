@@ -1,6 +1,9 @@
 let express = require('express');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
+let session = require('express-session');
+let flash = require('req-flash');
+let helmet = require('helmet');
 
 let secret = require('../config/config.json').secret;
 
@@ -15,5 +18,15 @@ app.use('/socket.io', express.static(__dirname + '/../node_modules/socket.io-cli
 
 app.use(cookieParser(secret));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: secret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: true,
+  },
+}));
+app.use(flash({ locals: 'flash' }));
+app.use(helmet());
 
 module.exports = app;

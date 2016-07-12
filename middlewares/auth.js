@@ -17,6 +17,7 @@ module.exports.verify = function (redirectTo) {
 
     jwt.verify(token).then(function(decodedUser) {
       req.user = decodedUser;
+      req.isAdmin = decodedUser.isAdmin;
       res.locals.userData = decodedUser;
       next();
     }).catch(function(err) {

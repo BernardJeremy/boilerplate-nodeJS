@@ -4,7 +4,7 @@
 
 		<% include ../partials/min-head %>
 		<link media="all" type="text/css" rel="stylesheet" href="/css/login.css">
-		<link media="all" type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.css">
+		<link media="all" type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css">
 
 	</head>
 	<body class="container-fluid">
@@ -23,6 +23,8 @@
 						<input class="btn btn-validate" type="submit" value="Connexion">
 					</ul>
 				</form>
+				<% include ../flash/error %>
+				<% include ../flash/success %>
 			</section>
 		</div>
 		<% include ../partials/footer %>

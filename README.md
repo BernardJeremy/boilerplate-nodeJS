@@ -7,6 +7,8 @@ Boilerplate created to start a Node.JS project, with several modules and feature
 - `cookie-parser`
 - `ejs`
 - `express`
+- `flash`
+- `helmet`
 - `sequelize`
 - `morgan`
 - `strftime`
